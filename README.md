@@ -1,6 +1,6 @@
-# CAP-ROC v0.1 — Capacity-Constrained ROC Feasibility
+# CAP-ROC v0.2 — Capacity-Constrained ROC Feasibility (delta gate)
 
-CAP-ROC is a minimal, auditable **deployment gate** for any alerting system that relies on **human review** (ICU alarms, fraud flags, safety incidents, content moderation queues, etc.).
+CAP-ROC includes an expectation gate and an optional δ-level overload gate under a Poisson model. It does not model bursty/clustered arrivals; use an overdispersed model (e.g., Negative Binomial) if logs show overdispersion.
 
 It answers one hard question before you ship:
 
@@ -148,12 +148,14 @@ See the DOCX standard for the decision-log template.
 
 ## Limitations (by design)
 
-CAP-ROC v0.1 is an **expectation** gate. It does not guarantee peak/burst protection.
-A v0.2 extension could add a “high-probability overload guarantee” (e.g., Poisson/Chernoff tail bound) if you want a δ-level risk bound.
+CAP-ROC includes an **expectation gate** (average load) and an optional **δ-level overload gate** under a Poisson model.
+It does not model bursty/clustered alert arrivals; if your logs show overdispersion, consider an overdispersed model (e.g., Negative Binomial) for tail risk.
+
 
 ## Versioning
 
-- Standard: `v0.1` (draft) — 2025-12-18
+- Standard: `v0.2` (delta gate) — 2025-12-18
+
 
 ## License
 
