@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use CAP-ROC in academic or technical work, please cite it as below."
+title: "CAP-ROC: Capacity-Constrained ROC Feasibility (delta gate)"
+authors:
+  - family-names: "SPARK-NITT"
+repository-code: "https://github.com/SPARK-NITT/CAP-ROC"
+license: "MIT"
+version: "v0.2-delta-gate"
+date-released: "2025-12-18"
+keywords:
+  - alert fatigue
+  - anomaly detection
+  - ROC
+  - human-in-the-loop
+  - MLOps
