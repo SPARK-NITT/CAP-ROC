@@ -2,6 +2,19 @@
 
 CAP-ROC includes an expectation gate and an optional δ-level overload gate under a Poisson model. It does not model bursty/clustered arrivals; use an overdispersed model (e.g., Negative Binomial) if logs show overdispersion.
 
+## Why CAP-ROC exists
+
+Most alerting systems die the same way: they “work” on paper, then bury humans in noise.
+CAP-ROC is a sanity gate that forces one uncomfortable question up front:
+Can the people on the other end of the alerts actually keep up?
+
+It ties model behavior (TPR/FPR), real-world volume (R), and staffing capacity (C) into one check.
+If the math says “no,” you don’t ship and hope—you change the threshold, add triage, or add capacity.
+
+v0.2 adds a δ-level overload gate so you can bound “bad hours,” not just the average.
+The goal isn’t a perfect ROC curve. The goal is an alert stream humans can survive.
+
+
 It answers one hard question before you ship:
 
 > **Can humans keep up with the alert stream at this operating point?**
