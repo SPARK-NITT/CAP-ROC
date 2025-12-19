@@ -1,38 +1,37 @@
 # CAP-ROC v0.2 — Capacity-Constrained ROC Feasibility (delta gate)
 
-CAP-ROC includes an expectation gate and an optional δ-level overload gate under a Poisson model. It does not model bursty/clustered arrivals; use an overdispersed model (e.g., Negative Binomial) if logs show overdispersion.
-
-## Why CAP-ROC exists
-
-Most alerting systems die the same way: they “work” on paper, then bury humans in noise.
-CAP-ROC is a sanity gate that forces one uncomfortable question up front:
-Can the people on the other end of the alerts actually keep up?
-
-It ties model behavior (TPR/FPR), real-world volume (R), and staffing capacity (C) into one check.
-If the math says “no,” you don’t ship and hope—you change the threshold, add triage, or add capacity.
-
-v0.2 adds a δ-level overload gate so you can bound “bad hours,” not just the average.
-The goal isn’t a perfect ROC curve. The goal is an alert stream humans can survive.
-
-
-It answers one hard question before you ship:
+CAP-ROC is a deployment **feasibility gate** for rare-event detectors: it couples ROC operating points (TPR/FPR) to **human review capacity** so you can answer one question before you ship:
 
 > **Can humans keep up with the alert stream at this operating point?**
 
-
+It includes:
+- an **expectation gate** (average load stays within capacity), and
+- an optional **δ-level overload gate** (tail-risk protection) using exact Poisson tail inversion.
 
 ![CAP-ROC Feasibility Map](docs/cap_roc_feasibility_map.png)
 
 ![CAP-ROC PASS/FAIL Card](docs/cap_roc_pass_fail_card.png)
-## The gate (one line)
 
-Define expected alert rate:
+---
+
+## Why CAP-ROC exists
+
+Alerting systems often “work” on paper (AUC/accuracy look great) and still fail in reality:
+rare events (`p` small) + modest `FPR` + high volume (`R`) ⇒ alert fatigue, backlog, ignored true alerts.
+
+CAP-ROC makes human capacity a **hard constraint**, not an afterthought.
+
+---
+
+## The expectation gate (one line)
+
+Define expected alert rate per time unit:
 
 \[
 A = R\,[p\,TPR + (1-p)\,FPR]
 \]
 
-A system is **capacity-stable** (in expectation) if:
+A system is **capacity-stable (in expectation)** if:
 
 \[
 A \le C
@@ -44,54 +43,40 @@ Where:
 - `p` = base anomaly rate `Pr(anomaly)`
 - `TPR` = `Pr(alert | anomaly)`
 - `FPR` = `Pr(alert | normal)`
-- `C` = human review capacity (alerts / time)
+- `C` = sustainable human review capacity (alerts / time)
 
 Equivalent (solve for max allowable false positives):
 
 \[
-FPR_{max} = \frac{C/R - p\,TPR}{1-p}
+FPR_{\max} = \frac{C/R - p\,TPR}{1-p}
 \]
 
 If `C/R - p*TPR < 0`, you're over capacity even with `FPR = 0`.
 
-## Why CAP-ROC exists
-
-Traditional model metrics (AUC, accuracy) can look “great” while the **ops reality** is unusable:
-
-- rare events (`p` small) + modest `FPR` + high volume (`R`) ⇒ alert fatigue, backlog, missed true events
-
-CAP-ROC makes capacity an explicit constraint rather than an afterthought.
-
-## What’s in this repo
-
-- `docs/`  
-  - `CAP-ROC_v0.1_SparkVault_Standard.docx` — the standard (definitions, checklist, example, required consistency checks)
-- `src/`  
-  - `cap_roc_tool.py` — reference CLI calculator
-- `examples/`  
-  - `cap_roc_examples.txt` — example runs and notes
-
+---
 
 ## The δ (delta) gate (tail-risk protection)
 
-CAP-ROC v0.1 is an **expectation gate**: it checks whether the *average* alert rate fits within human capacity.
+The expectation gate controls the **average** load. The δ gate controls the probability of “bad hours/days.”
 
-CAP-ROC v0.2 adds an optional **δ-level overload gate** under a Poisson model for alert counts per time unit:
+Model alerts per time unit as:
 
-- Let the expected alert rate be:
-  \[
-  \lambda = A = R\,[p\,TPR + (1-p)\,FPR]
-  \]
-- Model the number of alerts in one time unit as:
-  \[
-  N \sim \mathrm{Poisson}(\lambda)
-  \]
-- Choose a risk target δ (e.g., 0.01) and require:
-  \[
-  \Pr(N > C) \le \delta
-  \]
+\[
+\lambda = A = R\,[p\,TPR + (1-p)\,FPR]
+\]
 
-Define \(\lambda_{\max}(\delta, C)\) as the largest mean such that \(\Pr(\mathrm{Poisson}(\lambda_{\max}) > C) \le \delta\).
+\[
+N \sim \mathrm{Poisson}(\lambda)
+\]
+
+Choose a risk target `δ` (e.g., 0.01) and require:
+
+\[
+\Pr(N > C) \le \delta
+\]
+
+Define \(\lambda_{\max}(\delta, C)\) as the largest mean such that
+\(\Pr(\mathrm{Poisson}(\lambda_{\max}) > C) \le \delta\).
 Then the δ gate requires:
 
 \[
@@ -104,95 +89,28 @@ This implies a δ-level bound on false positives:
 FPR_{\max}^{\delta} = \frac{\lambda_{\max}/R - p\,TPR}{1-p}
 \]
 
-**Implementation note:** for small capacities (e.g., C ≤ 10) the normal approximation can be inaccurate; the reference tool computes \(\lambda_{\max}\) by exact Poisson tail inversion (binary search).
+**Implementation note:** For small capacities (e.g., `C ≤ 10`), normal approximations can be inaccurate.
+The reference tool computes \(\lambda_{\max}\) by **exact Poisson tail inversion (binary search)**.
 
+---
+
+## What’s in this repo
+
+- `docs/`
+  - `CAP-ROC_v0.1_SparkVault_Standard.docx` — spec + checklist (docx is still v0.1 draft)
+- `src/`
+  - `cap_roc_tool.py` — reference CLI calculator (supports `--delta`)
+- `examples/`
+  - `cap_roc_examples.txt` — example runs and notes
+
+---
 
 ## Quickstart
 
 ### Requirements
-- Python 3.9+ (no external packages required)
+- Python 3.9+ (no external packages)
 
-### Run the calculator
+### Run the calculator (expectation gate)
 
 ```bash
 python src/cap_roc_tool.py --R 20 --p 0.01 --tpr 0.85 --fpr 0.30 --C 4
-```
-
-You’ll get:
-
-- expected alert rate `A`
-- **PASS/FAIL** on `A <= C`
-- `FPR_max` (given `R, p, TPR, C`)
-- `C_required` (capacity needed for the chosen `TPR, FPR`)
-- `TPR_max` (max sensitivity feasible at that `FPR`)
-
-## Example: ICU sepsis alerting (capacity check)
-
-Assume:
-
-- `R = 20` patient-hour windows/hour
-- `p = 0.01`
-- `TPR = 0.85`
-- capacity `C = 4` alerts/hour
-
-Then:
-
-\[
-FPR_{max} \approx \frac{0.2 - 0.0085}{0.99} \approx 0.193
-\]
-
-If your operating point has `FPR > 0.193`, you are engineering overload **by design** (on average).
-
-## Recommended workflow (SparkVault-style discipline)
-
-1. **Generate** your math/spec output  
-2. **Consistency check** (required): definitions, ratio direction, units, edge cases, recompute example  
-3. **Decide + log**: record `R, p, TPR, FPR, C`, PASS/FAIL, mitigation plan
-
-See the DOCX standard for the decision-log template.
-
-## Common mitigations when CAP-ROC fails
-
-- raise threshold (reduce `FPR`)
-- add multi-stage triage (filter → stronger model → human)
-- scope the problem to raise `p` (focus on higher-risk subsets)
-- increase capacity `C` (staffing / workflow redesign / automation)
-- choose a longer time unit only if latency remains acceptable
-
-## Limitations (by design)
-
-CAP-ROC includes an **expectation gate** (average load) and an optional **δ-level overload gate** under a Poisson model.
-It does not model bursty/clustered alert arrivals; if your logs show overdispersion, consider an overdispersed model (e.g., Negative Binomial) for tail risk.
-
-
-## Versioning
-
-- Standard: `v0.2` (delta gate) — 2025-12-18
-
-
-## License
-
-MIT (see `LICENSE`).
-
-
-## Worked example (fraud / high-volume review)
-
-Assume (per day):
-
-- Incoming transactions: `R = 10,000,000`
-- Base fraud rate: `p = 0.001` (0.1%)
-- Operating point: `TPR = 0.90`, `FPR = 0.01`
-- Human review capacity: `C = 110,000` alerts/day
-- δ gate: `δ = 0.01` (1% chance of exceeding capacity on a given day, Poisson model)
-
-Run:
-
-```bash
-python src/cap_roc_tool.py --R 10000000 --p 0.001 --tpr 0.90 --fpr 0.01 --C 110000 --delta 0.01
-```
-
-Interpretation:
-
-- If the mean gate fails, you will overload reviewers on average.
-- If the δ gate fails, you may be “fine on average” but still exceed capacity too frequently (bad days become routine).
-
