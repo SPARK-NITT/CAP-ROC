@@ -1,0 +1,18 @@
+CAP-ROC v0.2 example runs
+
+1) ICU sepsis example (mean gate FAIL)
+python src/cap_roc_tool.py --R 20 --p 0.01 --tpr 0.85 --fpr 0.30 --C 4
+
+2) ICU sepsis example (mean gate PASS)
+python src/cap_roc_tool.py --R 20 --p 0.01 --tpr 0.85 --fpr 0.10 --C 4
+
+3) ICU sepsis example with δ gate (Poisson tail control)
+Target: P(alerts/time > C) <= 0.01
+python src/cap_roc_tool.py --R 20 --p 0.01 --tpr 0.85 --fpr 0.07 --C 4 --delta 0.01
+
+4) Fraud example with δ gate (high volume)
+python src/cap_roc_tool.py --R 10000000 --p 0.001 --tpr 0.90 --fpr 0.01 --C 110000 --delta 0.01
+
+Notes:
+- All rates share the same time unit. If R is per day, C must be per day.
+- δ gate uses exact Poisson inversion (binary search). For correlated/bursty alert streams, Poisson may understate tail risk.
