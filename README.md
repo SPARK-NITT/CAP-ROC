@@ -114,3 +114,16 @@ The reference tool computes \(\lambda_{\max}\) by **exact Poisson tail inversion
 
 ```bash
 python src/cap_roc_tool.py --R 20 --p 0.01 --tpr 0.85 --fpr 0.30 --C 4
+
+
+### Related SPARK-NITT standards
+
+- NITT — digital identity standard  
+  https://github.com/SPARK-NITT/nitt-digital-identity-standard
+- IRST — transparency for recursive systems  
+  https://github.com/SPARK-NITT/IRST-Institute-for-Recursive-Systems-Transparency
+- HRIS — coherence-centered refusal (HRIS 3.2.4(b))  
+  https://github.com/SPARK-NITT/HRIS-Human-Recursive-Integrity-Standard
+- CTGS — consumer transparency governance  
+  https://github.com/SPARK-NITT/ctgs-consumer-transparency-standard
+
