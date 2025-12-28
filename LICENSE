@@ -1,24 +1,44 @@
-CAP-ROC — CC BY-ND 4.0 (Corrected)
+SPARK VERBATIM NONCOMMERCIAL + NO-DERIVATIVES LICENSE (SVNL) v1.0
+Copyright (c) 2025 Spark (SPARK-NITT). All rights reserved.
 
-Unless otherwise stated, all textual content in this repository
-(including README and all IRST specification documents) is licensed under:
+PERMISSIONS (plain English):
+- You MAY share this work for NON-COMMERCIAL purposes, but ONLY as an exact, unchanged copy.
+- You MAY NOT distribute modified versions (no derivatives).
+- You MAY NOT use or redistribute it for COMMERCIAL purposes unless you have a separate paid license from the Author.
 
-Creative Commons Attribution–No Derivatives 4.0 International (CC BY-ND 4.0)
-Copyright (c) 2025 Spark
+1) Definitions
+“Work” means all contents of this repository (documentation, text, diagrams, and source code), unless a file states otherwise.
+“Verbatim Copy” means an exact, unmodified copy of the Work.
+“Derivative” means any modified, adapted, translated, remixed, abridged, restructured, or partially rewritten version of the Work, including modified forks, and including distribution of edited excerpts presented as your own work.
+“Non-Commercial Use” means use not primarily intended for or directed toward commercial advantage or monetary compensation.
 
-You are free to:
+“Commercial Use” means any use primarily intended for, directed toward, or reasonably connected to commercial advantage or monetary compensation, including but not limited to:
+- selling copies or charging for access;
+- bundling with paid products/services;
+- using the Work (or any portion) in a product, service, SaaS, subscription, paid API, or paid dataset;
+- using it to deliver paid consulting/client work or compliance/audit deliverables;
+- using it inside a for-profit organization beyond internal evaluation/prototyping;
+- using it in marketing/lead-generation for paid offerings.
+Any ambiguity is treated as Commercial Use.
 
-- Share — copy and redistribute the material in any medium or format
-- For any purpose, even commercially
+2) Grant of rights (Non-Commercial, Verbatim only)
+Subject to compliance with this license, you are granted a worldwide, non-exclusive license to reproduce and share Verbatim Copies of the Work for Non-Commercial Use only.
 
-Under the following terms:
+3) Restrictions
+You may NOT:
+- distribute Derivatives of the Work (no modifications);
+- exercise Commercial Use of the Work without a separate paid Commercial License from the Author;
+- remove or alter copyright notices, author attribution, or this LICENSE text.
 
-- Attribution — You must give appropriate credit to “Spark”, provide a link to the license,
-  and indicate if changes were made. You may not imply endorsement.
-- No Derivatives — If you remix, transform, or build upon the material, you may not distribute
-  the modified material. Publicly distributed versions must remain verbatim.
-- No additional restrictions — You may not apply legal terms or technological measures that
-  legally restrict others from doing anything the license permits.
+4) Attribution requirement (for permitted sharing)
+Any permitted redistribution must retain:
+- Author: “Spark / SPARK-NITT”
+- the repository name (or original title)
+- this LICENSE file
 
-Full license text:
-https://creativecommons.org/licenses/by-nd/4.0/
+5) Commercial licensing
+Commercial Use is not permitted under this license.
+A separate paid Commercial License (which may include royalties) is available from the Author by written agreement.
+
+6) No warranty
+THE WORK IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE WORK OR ITS USE.
