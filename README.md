@@ -96,8 +96,6 @@ The reference tool computes \(\lambda_{\max}\) by **exact Poisson tail inversion
 
 ## What’s in this repo
 
-- `docs/`
-  - `CAP-ROC_v0.1_SparkVault_Standard.docx` — spec + checklist (docx is still v0.1 draft)
 - `src/`
   - `cap_roc_tool.py` — reference CLI calculator (supports `--delta`)
 - `examples/`
