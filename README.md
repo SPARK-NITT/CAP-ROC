@@ -104,6 +104,16 @@ The reference tool computes \(\lambda_{\max}\) by **exact Poisson tail inversion
 
 ---
 
+## License
+
+Non-commercial redistribution is allowed **only as an unchanged copy**. **No derivatives.**
+Commercial use (including sale/monetization) requires a separate paid license from the author.
+
+See `LICENSE`.
+
+
+---
+
 ## Quickstart
 
 ### Requirements
