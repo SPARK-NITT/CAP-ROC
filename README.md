@@ -10,7 +10,8 @@ It includes:
 
 ![CAP-ROC Feasibility Map](docs/cap_roc_feasibility_map.png)
 
-![CAP-ROC PASS/FAIL Card](docs/cap_roc_pass_fail_card.png)
+![CAP-ROC PASS/FAIL Card](docs/cap_roc_pass_fail_card_clean.png)
+
 
 ---
 
