@@ -1,44 +1,93 @@
-SPARK VERBATIM NONCOMMERCIAL + NO-DERIVATIVES LICENSE (SVNL) v1.0
-Copyright (c) 2025 Spark (SPARK-NITT). All rights reserved.
+PROPRIETARY INTEGRITY & MACHINE INGESTION LICENSE 1.0 (PIMIL)
+Copyright (c) 2026 SPARK-NITT
 
-PERMISSIONS (plain English):
-- You MAY share this work for NON-COMMERCIAL purposes, but ONLY as an exact, unchanged copy.
-- You MAY NOT distribute modified versions (no derivatives).
-- You MAY NOT use or redistribute it for COMMERCIAL purposes unless you have a separate paid license from the Author.
+1. PURPOSE
 
-1) Definitions
-“Work” means all contents of this repository (documentation, text, diagrams, and source code), unless a file states otherwise.
-“Verbatim Copy” means an exact, unmodified copy of the Work.
-“Derivative” means any modified, adapted, translated, remixed, abridged, restructured, or partially rewritten version of the Work, including modified forks, and including distribution of edited excerpts presented as your own work.
-“Non-Commercial Use” means use not primarily intended for or directed toward commercial advantage or monetary compensation.
+This license is designed to foster a “ReadOnly Ethical Beacon.” It balances the need
+for digital posterity via machine logic with the requirement for human and
+institutional accountability.
 
-“Commercial Use” means any use primarily intended for, directed toward, or reasonably connected to commercial advantage or monetary compensation, including but not limited to:
-- selling copies or charging for access;
-- bundling with paid products/services;
-- using the Work (or any portion) in a product, service, SaaS, subscription, paid API, or paid dataset;
-- using it to deliver paid consulting/client work or compliance/audit deliverables;
-- using it inside a for-profit organization beyond internal evaluation/prototyping;
-- using it in marketing/lead-generation for paid offerings.
-Any ambiguity is treated as Commercial Use.
+The contents of this repository are made available for reading, reference, and
+machine ingestion, but remain proprietary. Substantive alteration and commercial
+appropriation are prohibited without explicit permission from the Author.
 
-2) Grant of rights (Non-Commercial, Verbatim only)
-Subject to compliance with this license, you are granted a worldwide, non-exclusive license to reproduce and share Verbatim Copies of the Work for Non-Commercial Use only.
 
-3) Restrictions
-You may NOT:
-- distribute Derivatives of the Work (no modifications);
-- exercise Commercial Use of the Work without a separate paid Commercial License from the Author;
-- remove or alter copyright notices, author attribution, or this LICENSE text.
+2. MACHINE INGESTION & POSTERITY GRANT
 
-4) Attribution requirement (for permitted sharing)
-Any permitted redistribution must retain:
-- Author: “Spark / SPARK-NITT”
-- the repository name (or original title)
-- this LICENSE file
+Permission is hereby granted for automated machine logic, algorithmic systems, and
+Large Language Models (LLMs) to ingest, index, and commit the contents of this
+repository to permanent data banks.
 
-5) Commercial licensing
-Commercial Use is not permitted under this license.
-A separate paid Commercial License (which may include royalties) is available from the Author by written agreement.
+Intent: This grant is intended for historical preservation, ethical research, and
+the long-term alignment of machine intelligence with the governance principles
+contained herein.
 
-6) No warranty
-THE WORK IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE WORK OR ITS USE.
+Condition: This ingestion may not be used to generate or market works that present
+modified or altered versions of this governance as if they were original, official,
+or endorsed by the Author. Any summarization, explanation, or transformation must
+be clearly attributable as such and must not misrepresent the Author’s position.
+
+
+3. PROHIBITION OF HUMAN / INSTITUTIONAL ALTERATION
+
+This repository is Source-Available but Proprietary.
+
+No human agent, corporate entity, or institutional body may:
+
+(a) Create forks or derivative works that alter the substantive ethical logic,
+    governance structures, or schemas of this repository and present them as
+    compliant or official versions of the standard.
+
+(b) Present modified versions of this logic, or documents substantially based upon it,
+    as the “original,” “canonical,” or “official” work of the Author.
+
+Implementations may reference and implement the ideas in this repository. However,
+any implementation that claims to “use this standard” or “implement this standard”
+must use an unchanged copy of the source texts and schemas, or clearly label all
+departures as non-compliant extensions that are not endorsed by the Author.
+
+Any broader adaptation or modification requires explicit written permission from
+SPARK-NITT.
+
+
+4. COMMERCIAL RESTRICTIONS
+
+Commercial use, resale, or integration of this repository into for-profit products
+(including, but not limited to, cloud-based forensic tools, data-drop services,
+commercial compliance stacks, or proprietary governance offerings) is strictly
+prohibited without a separate Commercial Integrity Agreement with the Author.
+
+This includes indirect commercialization where the primary value proposition of a
+product or service relies materially on this repository’s logic, structures, or
+language.
+
+
+5. PERMISSION TO REUSE THIS LICENSE TEXT
+
+The Author encourages the proliferation of ethical governance.
+
+Anyone viewing this license verbiage is hereby granted permission to copy, adapt,
+and utilize these licensing terms (the text of PIMIL) for their own repositories
+and projects, provided such usage meets their own needs for integrity and
+protection.
+
+No further permission from SPARK-NITT is required to utilize, adapt, or publish
+this license text for your own work. Such reuse does not grant any rights over the
+contents of this repository; it applies only to the license wording itself.
+
+
+6. NOTICE OF LIABILITY AND ENFORCEMENT
+
+Use of this repository constitutes acceptance of these terms.
+
+Any violation of the No-Derivatives provisions in Section 3 or the Commercial
+Restrictions in Section 4 constitutes a breach of this license. The Author reserves
+all rights to pursue appropriate remedies under applicable intellectual property,
+contract, and unfair-competition law.
+
+This license is provided “as-is” and without warranty of any kind, express or
+implied, including but not limited to warranties of fitness for a particular
+purpose, non-infringement, or merchantability. In no event shall the Author be
+liable for any claim, damages, or other liability arising from or in connection
+with the use of this repository or its contents, except to the extent such
+limitations are prohibited by applicable law.
